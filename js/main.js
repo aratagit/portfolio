@@ -98,3 +98,25 @@ document.querySelectorAll('.apps').forEach((block) => {
     if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
   });
 });
+
+// Media optimization: lighter video behavior on mobile/desktop
+(() => {
+  const videos = Array.from(document.querySelectorAll('video'));
+  if (videos.length === 0) return;
+
+  // Prefer metadata-only preload to avoid heavy network on load
+  videos.forEach((v) => {
+    try { v.preload = 'metadata'; } catch {}
+  });
+
+  // Pause videos when not visible to save battery/CPU
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      const vid = e.target;
+      if (!e.isIntersecting && !vid.paused) {
+        vid.pause();
+      }
+    });
+  }, { threshold: 0.2 });
+  videos.forEach((v) => io.observe(v));
+})();

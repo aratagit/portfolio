@@ -173,3 +173,20 @@ body {
 
 /* Remove legacy sections */
 #about, #projects, #contact { display: none !important; }
+
+/* Responsive enhancements: tablets and phones */
+@media (max-width: 900px) {
+  /* 2-up slides on tablets */
+  .apps .slide { flex: 0 0 calc((100% - var(--gap)) / 2); }
+  .apps .slider-btn.prev { left: -2px; }
+  .apps .slider-btn.next { right: -2px; }
+}
+
+@media (max-width: 600px) {
+  /* 1-up large slide for easy swipe */
+  .apps .track { --gap: 10px; padding: 8px; scroll-padding-inline: 8px; }
+  .apps .slide { flex: 0 0 min(88%, 420px); }
+  /* Header/nav tweaks */
+  .site-header { grid-template-columns: auto 1fr auto; gap: 10px; }
+  .site-nav { gap: 10px; font-size: 14px; flex-wrap: wrap; justify-content: center; }
+}
