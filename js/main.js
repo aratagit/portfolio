@@ -120,3 +120,82 @@ document.querySelectorAll('.apps').forEach((block) => {
   }, { threshold: 0.2 });
   videos.forEach((v) => io.observe(v));
 })();
+
+// Generate poster thumbnails so mobile shows a preview frame
+(() => {
+  const vids = Array.from(document.querySelectorAll('video'));
+  if (vids.length === 0) return;
+
+  function generatePoster(video) {
+    if (!video || video.getAttribute('poster')) return Promise.resolve(false);
+    return new Promise((resolve) => {
+      const temp = document.createElement('video');
+      temp.src = video.currentSrc || video.src;
+      temp.muted = true;
+      temp.playsInline = true;
+      temp.preload = 'auto';
+
+      let done = false;
+      const cleanup = (ok) => {
+        if (done) return; done = true;
+        try { temp.pause(); temp.removeAttribute('src'); temp.load(); } catch {}
+        temp.remove();
+        resolve(!!ok);
+      };
+
+      temp.addEventListener('error', () => cleanup(false));
+      temp.addEventListener('loadedmetadata', () => {
+        try {
+          // Seek a tiny bit in; some encoders have black frame at t=0
+          const t = Math.min(0.12, (temp.duration || 3) * 0.02);
+          const onSeek = () => {
+            try {
+              const w = temp.videoWidth || 640;
+              const h = temp.videoHeight || 360;
+              const c = document.createElement('canvas');
+              c.width = w; c.height = h;
+              const ctx = c.getContext('2d');
+              ctx.drawImage(temp, 0, 0, w, h);
+              const data = c.toDataURL('image/jpeg', 0.72);
+              if (data && data.length > 32) video.setAttribute('poster', data);
+              cleanup(true);
+            } catch {
+              cleanup(false);
+            }
+          };
+          temp.addEventListener('seeked', onSeek, { once: true });
+          try { temp.currentTime = t; } catch { onSeek(); }
+        } catch {
+          cleanup(false);
+        }
+      }, { once: true });
+
+      // Attach to DOM to improve iOS loading behavior (hidden)
+      temp.style.position = 'fixed';
+      temp.style.opacity = '0';
+      temp.style.pointerEvents = 'none';
+      temp.style.width = '1px';
+      temp.style.height = '1px';
+      document.body.appendChild(temp);
+      try { temp.load(); } catch {}
+    });
+  }
+
+  // Pre-generate for on-screen videos; lazy for others
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        generatePoster(e.target).finally(() => io.unobserve(e.target));
+      }
+    });
+  }, { threshold: 0.01, rootMargin: '300px' });
+
+  vids.forEach((v, i) => {
+    if (i < 4) {
+      // Eager for the first few (hero and top sections)
+      generatePoster(v);
+    } else {
+      io.observe(v);
+    }
+  });
+})();
