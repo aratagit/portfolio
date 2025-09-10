@@ -20,12 +20,12 @@
     <header class="site-header">
       <a class="logo" href="#top" aria-label="トップへ">
         <span class="logo-mark">◆</span>
-        <span class="logo-text">NEO</span>
+        <span class="logo-text">Fukai Studio</span>
       </a>
       <nav class="site-nav" aria-label="メイン">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#apps">アプリ</a>
+        <a href="#kids3d">3DCG</a>
+        <a href="#zakka3d">3Dプリンタ</a>
       </nav>
       <div class="header-actions">
         <button id="accent-toggle" class="btn btn-ghost" aria-label="アクセントカラーを切り替え">Accent</button>
@@ -40,9 +40,235 @@
           <span class="spark">◣</span>
         </h1>
         <p class="hero-lead">深井のポートフォリオ</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projects">プロジェクトを見る</a>
-          <a class="btn btn-outline" href="#contact">連絡する</a>
+
+        <!-- Apps slider inside hero -->
+        <section id="apps" class="panel reveal is-visible apps" style="margin-top:24px;">
+          <h2 class="section-title">スマートフォンアプリ</h2>
+          <div class="slider" role="region" aria-label="スマートフォンアプリ動画スライダー">
+            <button class="slider-btn prev" aria-label="前へ">‹</button>
+            <div class="track" tabindex="0">
+              <figure class="slide">
+                <video class="app-video" src="assets/media/app_1.mp4" playsinline muted loop controls></video>
+                <figcaption class="slide-caption">にゃんこタロット</figcaption>
+              </figure>
+              <figure class="slide">
+                <video class="app-video" src="assets/media/app_2.mp4" playsinline muted loop controls></video>
+                <figcaption class="slide-caption">１分間集中ゲーム</figcaption>
+              </figure>
+              <figure class="slide">
+                <video class="app-video" src="assets/media/app_3.mp4" playsinline muted loop controls></video>
+                <figcaption class="slide-caption">おみくじアプリ</figcaption>
+              </figure>
+            </div>
+            <button class="slider-btn next" aria-label="次へ">›</button>
+          </div>
+        </section>
+
+      </section>
+
+      <section id="mrapps" class="panel reveal apps">
+        <h2 class="section-title">MR向けアプリケーション</h2>
+        <div class="slider" role="region" aria-label="MR向けアプリケーションスライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/VRapp_1.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">VRapp_1</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/VRapp_2.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">VRapp_2</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/VRapp_3.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">VRapp_3</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/VRapp_4.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">VRapp_4</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="kids3d" class="panel reveal apps">
+        <h2 class="section-title">子供向け3DCGキャラクター</h2>
+        <div class="slider" role="region" aria-label="子供向け3DCGキャラクタースライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child01.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child01</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child02.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child02</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child03.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child03</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child04.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child04</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child05.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child05</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child06.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child06</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Child07.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_Child07</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="games3d" class="panel reveal apps">
+        <h2 class="section-title">ゲーム用3DCG</h2>
+        <div class="slider" role="region" aria-label="ゲーム用3DCGスライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_game01.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_game01</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_game02.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_game02</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_game03.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_game03</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_game04.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_game04</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_game05.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">3DCG_game05</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="licensed3d" class="panel reveal apps">
+        <h2 class="section-title">版権キャラクター3DCG</h2>
+        <div class="slider" role="region" aria-label="版権キャラクター3DCGスライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Cre1.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">ぐんまちゃん</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Cre2.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">チーバくん</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Cre3.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">メタルキング</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Cre4.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">つちわらし</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_Cre5.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">デスピサロ</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="netmemes3d" class="panel reveal apps">
+        <h2 class="section-title">ネットミーム3DCGキャラ</h2>
+        <div class="slider" role="region" aria-label="ネットミーム3DCGキャラスライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_net1.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">なん民</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_net2.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">原住民</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_net3.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">なん民座り</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="zakka3d" class="panel reveal apps">
+        <h2 class="section-title">3Dプリンタ出力用雑貨CG</h2>
+        <div class="slider" role="region" aria-label="3Dプリンタ出力用雑貨CGスライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka1.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">ペン持ちひつじ</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka2.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">コーヒー猫</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka3.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">土偶</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka4.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">羊胸像</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka5.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">メカ羊</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka6.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">メカ羊全体</figcaption>
+            </figure>
+            <figure class="slide">
+              <video class="app-video" src="assets/media/3DCG_zakka7.mp4" playsinline muted loop controls></video>
+              <figcaption class="slide-caption">頭蓋骨</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
+        </div>
+      </section>
+
+      <section id="prints3d" class="panel reveal apps">
+        <h2 class="section-title">3Dプリンタ出力</h2>
+        <div class="slider" role="region" aria-label="3Dプリンタ出力スライダー">
+          <button class="slider-btn prev" aria-label="前へ">‹</button>
+          <div class="track" tabindex="0">
+            <figure class="slide">
+              <img class="app-image" src="assets/images/image01.jpg" alt="羊胸像" loading="lazy" decoding="async" />
+              <figcaption class="slide-caption">羊胸像</figcaption>
+            </figure>
+            <figure class="slide">
+              <img class="app-image" src="assets/images/image02.jpg" alt="各出力" loading="lazy" decoding="async" />
+              <figcaption class="slide-caption">各出力</figcaption>
+            </figure>
+            <figure class="slide">
+              <img class="app-image" src="assets/images/image03.jpg" alt="鳥獣戯画" loading="lazy" decoding="async" />
+              <figcaption class="slide-caption">鳥獣戯画</figcaption>
+            </figure>
+          </div>
+          <button class="slider-btn next" aria-label="次へ">›</button>
         </div>
       </section>
 
@@ -107,9 +333,14 @@
     </main>
 
     <footer class="site-footer">
-      <small>© <span id="y"></span> Your Name</small>
+      <small>© 2025 Fukai</small>
     </footer>
 
-    <script src="js/main.js" type="module"></script>
+    <script src="js/main.js" defer></script>
   </body>
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
   </html>

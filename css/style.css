@@ -10,6 +10,7 @@
   --accent-2: #8a2be2;
   --radius: 14px;
   --shadow: 0 10px 30px rgba(0, 229, 255, 0.2), 0 0 60px rgba(138, 43, 226, 0.15);
+  --header-h: 64px;
 }
 
 * { box-sizing: border-box; }
@@ -22,6 +23,7 @@ body {
               radial-gradient(1200px 800px at 90% 10%, #141a36 0%, transparent 50%),
               var(--bg);
   line-height: 1.6;
+  padding-top: var(--header-h);
 }
 
 /* Background grid */
@@ -53,9 +55,9 @@ body {
   100% { transform: translate(0,0) scale(1); }
 }
 
-/* Header */
+/* Header (fixed) */
 .site-header {
-  position: sticky; top: 0; z-index: 20;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000; min-height: var(--header-h);
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
   gap: 16px; padding: 16px 20px;
   backdrop-filter: blur(10px);
@@ -87,7 +89,11 @@ body {
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: var(--shadow);
 }
+.hero, .panel { scroll-margin-top: calc(var(--header-h) + 12px); }
 .section-title { margin: 0 0 14px; font-size: clamp(22px, 3vw, 28px); letter-spacing: .12em; color: #fff; text-shadow: 0 0 12px rgba(0,229,255,.35); }
+/* Center titles for slider sections and tighten gap after hero */
+.apps .section-title { text-align: center; }
+.hero + .apps.panel { margin-top: 0; }
 
 /* Cards */
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
@@ -121,6 +127,37 @@ body {
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
 
+/* Apps slider */
+.apps .slider { position: relative; }
+.apps .track {
+  --gap: 12px;
+  display: flex; gap: var(--gap); overflow-x: auto; padding: 8px 8px 16px; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; scrollbar-width: none;
+}
+.apps .track::-webkit-scrollbar { display: none; }
+.apps .slide { flex: 0 0 calc((100% - (var(--gap) * 2)) / 3); scroll-snap-align: center; 
+  border-radius: 16px; padding: 12px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.08); box-shadow: var(--shadow);
+}
+.apps .app-video { width: 100%; height: auto; display: block; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: transparent; }
+.apps .app-image { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; display: block; border-radius: 10px; border: 1px solid rgba(255,255,255,.1); background: #0a0e19; }
+.apps .slide-caption { margin: 8px 4px 0; color: #d9e6ff; letter-spacing: .06em; font-weight: 700; text-shadow: 0 0 10px rgba(0,229,255,.25); font-size: 14px; }
+.apps .slider-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 42px; height: 42px;
+  border-radius: 50%; border: 1px solid rgba(255,255,255,.18); background: radial-gradient(circle at 50% 30%, rgba(255,255,255,.2), rgba(255,255,255,.08)); color: var(--text);
+  cursor: pointer; display: grid; place-items: center; backdrop-filter: blur(6px);
+  text-shadow: 0 0 8px var(--accent); box-shadow: 0 0 30px rgba(0,229,255,.25);
+}
+.apps .slider-btn:hover { border-color: color-mix(in oklab, var(--accent) 60%, white 40%); }
+.apps .slider-btn.prev { left: -6px; }
+.apps .slider-btn.next { right: -6px; }
+
+@media (max-width: 600px) {
+  /* モバイルもおおむね"半分の大きさ"（=約3枚見せ） */
+  .apps .track { --gap: 10px; }
+  .apps .slide { flex-basis: calc((100% - (var(--gap) * 2)) / 3); }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .bg-grid { animation: none; }
@@ -134,3 +171,5 @@ body {
   .site-nav { gap: 12px; font-size: 14px; }
 }
 
+/* Remove legacy sections */
+#about, #projects, #contact { display: none !important; }

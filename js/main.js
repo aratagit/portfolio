@@ -63,3 +63,38 @@ document.querySelectorAll('[data-tilt]').forEach(attachTilt);
 const y = document.getElementById('y');
 if (y) y.textContent = new Date().getFullYear();
 
+// Slider controls (support multiple blocks with class .apps)
+document.querySelectorAll('.apps').forEach((block) => {
+  const track = block.querySelector('.track');
+  const prev = block.querySelector('.prev');
+  const next = block.querySelector('.next');
+  const slides = Array.from(block.querySelectorAll('.slide'));
+  if (!track || slides.length === 0) return;
+
+  let index = 0;
+  function clamp2(n, min, max) { return Math.min(Math.max(n, min), max); }
+  function go(i) {
+    index = clamp2(i, 0, slides.length - 1);
+    slides[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+
+  prev?.addEventListener('click', () => go(index - 1));
+  next?.addEventListener('click', () => go(index + 1));
+
+  // Update index based on visibility inside this track
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        const i = slides.indexOf(e.target);
+        if (i >= 0) index = i;
+      }
+    });
+  }, { root: track, threshold: 0.6 });
+  slides.forEach((s) => io.observe(s));
+
+  // Keyboard support when track focused
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+  });
+});
